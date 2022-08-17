@@ -28,6 +28,13 @@ public class FrmAdministrador extends javax.swing.JFrame {
         this.setLocationRelativeTo(this);
         this.pintarImagen(lblLogo,"src/img/cobros.png");
     }
+    
+    public FrmAdministrador() {
+        initComponents();
+        this.setLocationRelativeTo(this);
+        this.pintarImagen(lblLogo,"src/img/cobros.png");
+  
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -54,7 +61,9 @@ public class FrmAdministrador extends javax.swing.JFrame {
         mniEstadisticaDeu = new javax.swing.JMenuItem();
         mniEstadisticaNR = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
+        mniIngresoSolicitudes = new javax.swing.JMenuItem();
         mniListarSolicitudes = new javax.swing.JMenuItem();
+        mniEstadoSolicitudes = new javax.swing.JMenuItem();
 
         jPanel3.setBackground(new java.awt.Color(205, 235, 217));
 
@@ -223,9 +232,15 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jMenu1.setBackground(new java.awt.Color(255, 255, 255));
         jMenu1.setText("Gestión de Solicitudes");
 
+        mniIngresoSolicitudes.setText("Ingreso de Solicitudes");
+        jMenu1.add(mniIngresoSolicitudes);
+
         mniListarSolicitudes.setBackground(new java.awt.Color(255, 255, 255));
         mniListarSolicitudes.setText("Listar Solicitudes");
         jMenu1.add(mniListarSolicitudes);
+
+        mniEstadoSolicitudes.setText("Estado de Solicitudes");
+        jMenu1.add(mniEstadoSolicitudes);
 
         jMenuBar1.add(jMenu1);
 
@@ -281,6 +296,20 @@ public class FrmAdministrador extends javax.swing.JFrame {
     public JMenuItem getMniListarEmpleado() {
         return mniListarEmpleado;
     }
+
+    public JMenuItem getMniEstadoSolicitudes() {
+        return mniEstadoSolicitudes;
+    }
+
+    public JMenuItem getMniIngresoSolicitudes() {
+        return mniIngresoSolicitudes;
+    }
+
+    public JMenuItem getMniListarSolicitudes() {
+        return mniListarSolicitudes;
+    }
+    
+    
    
     public JPanel getPanelAdmin() {
         return panelAdmin;
@@ -306,6 +335,8 @@ public class FrmAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniEstadisticaDeu;
     private javax.swing.JMenuItem mniEstadisticaNR;
     private javax.swing.JMenuItem mniEstadisticaPag;
+    private javax.swing.JMenuItem mniEstadoSolicitudes;
+    private javax.swing.JMenuItem mniIngresoSolicitudes;
     private javax.swing.JMenuItem mniListarEmpleado;
     private javax.swing.JMenuItem mniListarSolicitudes;
     private javax.swing.JMenuItem mniRegistrarEmpleado;
