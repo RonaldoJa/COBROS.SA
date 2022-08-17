@@ -6,6 +6,7 @@ package controlador;
  * @author Grupo E
  */
 import Vista.FrmEditarPropietario;
+import Vista.PnlIngresoSolicitudes;
 import Vista.PnlRegistroPropietario;
 import controlador.Excepciones.CedulaPropietarioException;
 import controlador.Excepciones.EdadExcepcion;
@@ -57,6 +58,14 @@ public class ValidarCampos {
         if (Character.isLetter(c) || txtTelefono.getText().length() > 9) {
             evt.consume();
             JOptionPane.showMessageDialog(null, "Ingrese solo Números de 10 dígitos");
+        }
+    }
+    
+    public void validarNumeros(KeyEvent evt, JTextField txtCampo){
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c)){
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Ingrese solo Números");
         }
     }
 
@@ -214,6 +223,18 @@ public class ValidarCampos {
                 && !frmEditarPropietario.getTxtAnioVehiculo().getText().isEmpty()) {
             return true;
         } else {
+            JOptionPane.showMessageDialog(null, "LLene todos los campos");
+            return false;
+        }
+    }
+    
+    public boolean validarCamposVaciosSolicitud(PnlIngresoSolicitudes pnlIngresoSolicitudes){
+        if (!pnlIngresoSolicitudes.getTxtIdFactura().getText().isEmpty()
+                && !pnlIngresoSolicitudes.getTxtaDescripcion().getText().isEmpty()){
+            return true;
+        }
+        
+        else {
             JOptionPane.showMessageDialog(null, "LLene todos los campos");
             return false;
         }

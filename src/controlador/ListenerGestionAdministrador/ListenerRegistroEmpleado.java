@@ -23,8 +23,17 @@ public class ListenerRegistroEmpleado extends KeyAdapter implements ActionListen
     static int generadorEmpleado = 1;
     static int generadorAdministrador = 1;
  
+    /**
+     * Constructor vacio para el control de la ventana RegistroEmpleado.java
+     */
     public ListenerRegistroEmpleado(){}
 
+    /**
+     * Constructor para el control de la ventana RegistroEmpleado.java
+     *
+     * @param ventanaRegistroEmpleado El parámetro ventanaRegistroEmpleado recibe el frame a
+     * controlar
+     */
     public ListenerRegistroEmpleado(PnlRegistroEmpleado ventanaRegistroEmpleado) {
         this.ventanaRegistroEmpleado = ventanaRegistroEmpleado;
         arrayEmpleado = new ArrayList();
@@ -33,18 +42,27 @@ public class ListenerRegistroEmpleado extends KeyAdapter implements ActionListen
         addKeyListeners();
     }
 
-
+    /**
+     * Metodo que asigna los ActionListeners correspondientes
+     */
     private void addActionListeners(){ 
         ventanaRegistroEmpleado.getBtnRegistrar().addActionListener(this);
         ventanaRegistroEmpleado.getBtnLimpiarRegistro().addActionListener(this);
         ventanaRegistroEmpleado.getBtnCancelar().addActionListener(this);
     }
     
+    /**
+     * Metodo que asigna los KeyListeners correspondientes
+     */
     private void addKeyListeners(){
         ventanaRegistroEmpleado.getTxtCedula().addKeyListener(this);
         ventanaRegistroEmpleado.getTxtTelefono().addKeyListener(this);        
     }
     
+    /**
+     * Metodo que crea un objeto empleado obteniendo los datos de los campos 
+     * textfield de la clase RegistrooEmpleado.java 
+     */
     private void crearEmpleado(){
         String idEmpleado = generarIdEmpleado();
         String nombre  = ventanaRegistroEmpleado.getTxtNombre().getText();
@@ -64,16 +82,25 @@ public class ListenerRegistroEmpleado extends KeyAdapter implements ActionListen
         empleadoDB.guardar(empleado);
     }
     
+    /**
+     * Metodo que guarda un objeto de tipo Empleado a un arraylist
+     */
     private void addArrayListEmpleado(Empleado empleado){       
         arrayEmpleado.add(empleado);
          limpiarCampos();
     }
     
+     /**
+     * Metodo que genera un IdEmpleado
+     */
     private String generarIdEmpleado(){
         System.out.println("IdEmpleado" +empleadoDB.obternerIdMaximo());
         return String.valueOf(empleadoDB.obternerIdMaximo()+1);  
     }
     
+    /**
+     * Metodo que genera un IdAdministrador
+     */
     private String generarIdAdministrador(){
         if( ventanaRegistroEmpleado.getCmbRolEmpleado().getSelectedIndex() == 1){
             return String.valueOf(generadorAdministrador++);
@@ -83,6 +110,9 @@ public class ListenerRegistroEmpleado extends KeyAdapter implements ActionListen
         }
     }
     
+    /**
+     * Metodo que limpia los campos jTextField
+     */
     private void limpiarCampos(){
         ventanaRegistroEmpleado.getTxtNombre().setText("");
         ventanaRegistroEmpleado.getTxtCedula().setText("");
@@ -99,10 +129,17 @@ public class ListenerRegistroEmpleado extends KeyAdapter implements ActionListen
             }
     }
 
+    /**
+     * Metodo que retorna el arraylist de tipo empleado
+     */
     public ArrayList<Empleado> getArrayEmpleado() {
         return arrayEmpleado;
     }
     
+    /**
+     * Metodo que escucha los eventos segun los listeners asignados
+     * @param e evento de tipo ActionListener recibido de un componente
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         
@@ -121,6 +158,10 @@ public class ListenerRegistroEmpleado extends KeyAdapter implements ActionListen
         }
     }
     
+    /**
+     * Metodo que escucha los eventos segun los listeners asignados
+     * @param e evento de tipo KeyListener recibido de un componente
+     */
     @Override
     public void keyTyped(KeyEvent e){
         if(e.getSource() == ventanaRegistroEmpleado.getTxtCedula()) {
